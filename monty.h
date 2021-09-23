@@ -56,13 +56,7 @@ typedef struct arguments
 } args_t;
 
 
-void pchar(stack_t **stack, unsigned int line_number);
-void pstr(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
-
-
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
@@ -74,14 +68,7 @@ void caller(void);
 void cleaner(void);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 
-void stack(stack_t **stack, unsigned int line_number);
-void queue(stack_t **stack, unsigned int line_number);
-
 void add(stack_t **stack, unsigned int line_number);
-void sub(stack_t **stack, unsigned int line_number);
-void divide(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
-void mod(stack_t **stack, unsigned int line_number);
 
 stack_t *add_dnodeint(stack_t **head, const int n);
 size_t print_dlistint(const stack_t *h);

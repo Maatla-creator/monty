@@ -52,16 +52,6 @@ void caller(void)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
-		{"sub", sub},
-		{"div", divide},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{"queue", queue},
-		{"stack", stack},
 		{NULL, NULL}};
 	int i = 0;
 	char *op = NULL;
@@ -83,20 +73,6 @@ void caller(void)
 	exit(EXIT_FAILURE);
 }
 
-/**
- * rotl - rotates stack to the top
- * @stack: doubly linked list
- * @line_number: the line
- */
-void rotl(stack_t **stack, unsigned int line_number)
-{
-	(void)line_number;
-	if (*stack && (*stack)->next)
-	{
-		add_dnodeint_end(stack, (*stack)->n);
-		delete_dnodeint_at_index(stack, 0);
-	}
-}
 
 /**
  * add_dnodeint_end - adds a node at the end of a doubly linked list
