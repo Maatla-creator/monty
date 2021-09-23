@@ -52,6 +52,10 @@ void caller(void)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
+		{"div", divide},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}};
 	int i = 0;
 	char *op = NULL;
