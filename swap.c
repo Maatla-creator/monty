@@ -1,34 +1,23 @@
 #include "monty.h"
 
 /**
- * m_swap - swap top two elements of `stack'
- * @stack: double pointer to head of stack
- * @line_number: line number of current operation
+ * swap - a function to swap within the stack
+ * @stack: indicating a doubly linkedlist
+ * @line_number: the number line
  *
- * Return: void
+ * Return: Nothing.
  */
-void m_swap(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *next;
+	register int temp;
 
-	if (var.stack_len < 2)
+	if ((!*stack) || !(*stack)->next)
 	{
-		dprintf(STDOUT_FILENO,
-			"L%u: can't swap, stack too short\n",
-			line_number);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		cleaner();
 		exit(EXIT_FAILURE);
 	}
-	if (var.stack_len == 2)
-	{
-		*stack = (*stack)->next;
-		return;
-	}
-	next = (*stack)->next;
-	next->prev = (*stack)->prev;
-	(*stack)->prev->next = next;
-	(*stack)->prev = next;
-	(*stack)->next = next->next;
-	next->next->prev = *stack;
-	next->next = *stack;
-	*stack = next;
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }

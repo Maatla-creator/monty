@@ -1,22 +1,49 @@
 #include "monty.h"
 
 /**
- * m_pint - print value on top of `stack', or exit if stack is empty
- * @stack: double pointer to head of stack
- * @line_number: line number of current operation
+ * pint - prints out everything in stack
+ * @stack: doubly linked list
+ * @line_number: the line
  *
- * Return: void
  */
-void m_pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack;
-
-	if (var.stack_len == 0)
+	if (!*stack)
 	{
-		dprintf(STDOUT_FILENO,
-			"L%u: can't pint, stack empty\n",
-			line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		cleaner();
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", head->n);
+	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * check_string - verify if argument is alpha
+ * @s: string passed to function
+ * Return: integer
+ */
+int check_string(char *s)
+{
+	register int str_idx = 0;
+
+	if (!s)
+	{
+		return (-1);
+	}
+	if (*s == '-')
+	{
+		s++;
+	}
+	while (s[str_idx])
+	{
+		if (s[str_idx] >= '0' && s[str_idx] <= '9')
+		{
+			str_idx++;
+		}
+		else
+		{
+			return (-1);
+		}
+	}
+	return (1);
 }

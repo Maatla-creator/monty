@@ -1,29 +1,21 @@
 #include "monty.h"
 
 /**
- * m_pop - pop top element off of `stack'
- * @stack: double pointer to head of stack
- * @line_number: line number of current operation
+ * pop - a function to pull data from the top of the stack
+ * @stack: indicating a doubly linkedlist
+ * @line_number: the number line
  *
- * Return: void
+ * Description: delete nodes at index if stack is not empty
+ * otherwise, print an error message
+ * Return: Nothing.
  */
-void m_pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *pop = *stack;
-
-	if (var.stack_len == 0)
+	if (!*stack)
 	{
-		dprintf(STDOUT_FILENO,
-			"L%u: can't pop an empty stack\n",
-			line_number);
+		fprintf(stderr, "L%u: Can't pop from an empty stack \n", line_number);
+		cleaner();
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next->prev = (*stack)->prev;
-	(*stack)->prev->next = (*stack)->next;
-	if (var.stack_len != 1)
-		*stack = (*stack)->next;
-	else
-		*stack = NULL;
-	free(pop);
-	var.stack_len--;
+	delete_dnodeint_at_index(stack, 0);
 }
